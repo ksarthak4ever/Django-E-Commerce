@@ -11,4 +11,8 @@ command to collect static files into STATIC_ROOT
 
 *To access stripe and mailgun features create your own account in their sites and add the api keys and password in settings.py file of perfectcushion directory accordingly.
 
+*To create a fresh database remove the database file and the migrations and run commands:~
+python manage.py makemigrations
+python manage.py migrate
+
 *For any queries contact me.
