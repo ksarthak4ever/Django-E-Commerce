@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %} <!-- To use crispy forms which will apply all the right bootstrap4 classes -->
+
+{% block metadescription %}
+	Sign up to get a new account with us. The Perfect Cushion Store has a variety of stunning and comfy cushions.
+{% endblock %}
+
+{% block title %}
+	Create a New Account - The Perfect Cushion Store
+{% endblock %}
+
+{% block content %}
+	<div>
+		{% if not form.is_valid %}
+			<div class="mx-auto">
+				<br>
+				<h1 class="my_title text-center">Create a new account</h1>
+				<br>
+				<div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+					<br>
+					<p>Enter the following information to create a new account.</p>
+					<form method="post">
+						{% csrf_token %}
+						<p>{{ form | crispy }}</p> <!-- added filter crispy to the form -->
+						<button type="submit" class="btn btn-secondary">Register Account</button>
+					</form>
+					<br>
+				</div>
+			</div>
+		{% else %} <!-- i.e if the customer has already the form then we will show different content on the same page to the customer -->
+			<div class="mx-auto">
+				<br>
+				<h1 class="my_title text-center">Your account has been successfully created</h1>
+				<br>
+				<div>
+					<p>
+						Dear Customer,
+						<br>
+						<br>
+						Your account has been created and is ready to use.
+						<br>
+						<a href="{% url 'signin' %}">Sign in</a> and enjoy the collection of cushions we offer at The Perfect Cushion Store.
+					</p>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block metadescription %}
+	This is the Thank You page. We thank you for your order and hope you enjoy your cushions.
+{% endblock %}
+
+{% block title %}
+	Thank You - The Perfect Cushion Store
+{% endblock %}
+
+{% block content %}
+	<div>
+		<div class="text-center">
+			<br>
+			<br>
+			<h1 class="text-center my_title">
+				Thank you for placing your order
+			</h1>
+			<br>
+			<br>
+			<p>Your order number is: <b>{{ customer_order.id }}</b></p>
+			<br>
+			<p>
+				We have received your order and will being processing the order right away. For your records, an email confirmation has been sent to the email provided at payment. The confirmation will contian a recipt and details of the purchase. Thank You!
+			</p>
+		</div>
+	</div>
+	<br>
+	<br>
+{% endblock %}

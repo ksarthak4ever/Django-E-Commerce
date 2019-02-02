@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block metadescription %}
+	This is the Order History page. Here are all your orders with The Perfect Cushion Store.
+{% endblock %}
+
+{% block title %}
+	Order History - The Perfect Cushion Store
+{% endblock %}
+
+{% block content %}
+	<div>
+		<div class="text-center">
+			<br>
+			<h1 class="text-center my_title">Order History</h1>
+			<br>
+			{% if order_details %} <!-- checking if order details value is not none -->
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Order Number</th>
+						<th>Order Date</th>
+						<th>Total Amount</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for order in order_details %} <!-- this for loop will bring the order id,date,total every time it runs --> 
+						<tr>
+							<td>{{ order.id }}</td>
+							<td>{{ order.created|date:"d M Y" }}</td>
+							<td>${{ order.total }}</td>
+							<td><i class="fas fa-check"></i>&nbsp;Complete</td> <!-- &nbsp is non break in space -->
+							<td><a href="{% url 'order:order_detail' order.id %}">View order</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>			
+			{% else %}
+			<p>You have not placed any orders yet.<br><br><a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary">Continue shopping</a></p>
+			{% endif %}
+		</div>
+	</div>
+	<br>
+	<br>
+{% endblock %}

@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="my_custom_menu">
+		<ul>
+			{% if request.user.is_authenticated and request.user.first_name %} <!-- checking if user is authenticated and first name of the user is available -->
+			<li>
+				Welcome, <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.first_name }} <i class="fas fa-user-circle"></i></a> <!-- Here by adding class dropdown-toggle we are making order history of orders dropdown -->  
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="" class="dropdown-item">Edit Profile</a>
+					<a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a> <!-- to get order history as droupdown list on the username -->
+				</div>
+			</li>
+			<li>
+				<a href="{% url 'signout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+			</li>
+			{% else %}
+			<li>
+				<a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+			</li>
+			<li>
+				<a href="{% url 'signin' %}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+</div>	

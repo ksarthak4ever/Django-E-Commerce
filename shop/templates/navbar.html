@@ -1,0 +1,33 @@
+<!-- navigation bar taking bootstrap navbar template -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item dropdown {% if 'shop' in request.path %}active {% endif %}" > <!-- checking if the shop has categories and products then making its navigation active -->
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shop
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'shop:allProdCat' %}">All Products</a>
+          {% for cat in links %}
+          <a class="dropdown-item" href="{{ cat.get_url }}">{{cat.name}}</a> <!-- To show products by category --> <!--Making Category of products links available throughout the shop -->
+          {% endfor %}
+        </div>
+      </li> 
+      {% if item_count > 0 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i class="fas fa-shopping-cart"></i>({{ item_count }})</a> <!-- here Your Cart link is replaced by cart icon using font awesome -->
+      </li>
+      {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'search_app:searchResult' %}" method="get">
+      {% csrf_token %}  <!-- Adding cross-site request forgery token to add a layer of protection in the search form against cross-site request forgery -->
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit"> <i class="fas fa-search"></i> </button> <!-- here we have replaced the search word with search icon using font awesome icon toolkit of css, the code for the icon has been taken from the site -->
+    </form>
+  </div>
+</nav>
+
