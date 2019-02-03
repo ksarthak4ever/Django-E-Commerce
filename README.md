@@ -2,7 +2,7 @@
 This is an E-Commerce web application made using Django through which you can create an account,buy products of different categories,place an order using Stripe and recieve emails using Mailgun.
 
 *Set up a virtual environment and install django and the libraries used in this project from the requirements.txt file using:~
-pip install requirements.txt
+pip install -r requirements.txt
 
 *Remember to run:~ python manage.py collectstatic 
 command to collect static files into STATIC_ROOT
