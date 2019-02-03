@@ -36,7 +36,7 @@ urlpatterns = [
 
     path('search/',include('search_app.urls')), 
 
-    path('', include('shop.urls')), #The issue is caused by the shop app (Please keep in mind this setup is different) as Django is getting confused by the other apps and did not know whether or not it could resolve the cart, order and search apps' urls
+    path('', include('shop.urls')), #Creating the patterns like this because if we put shop app first then django can get confused during the searching of products as it reads urlpatterns top to bottom which can lead to 404 page not found.
 
 ]
 
