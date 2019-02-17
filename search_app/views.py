@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from shop.models import Product
-from django.db.models import Q
+from django.db.models import Q #importing Q objects to provide search functionality to the site
 
 ''' Keyword argument queries – in filter(), etc. – are “AND”ed together. If you need to execute more complex queries (for example, queries with OR statements), you can use Q objects.
 
